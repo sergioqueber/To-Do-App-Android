@@ -17,7 +17,7 @@ class ShareViewModel @Inject constructor(
 
     private val _allTasks =
         MutableStateFlow<List<ToDoTask>>(emptyList())
-    val allTasks: StateFlow<List<ToDoTask>> = _allTasks    //Publicly stored
+    val allTasks: StateFlow<List<ToDoTask>> = _allTasks    //Publicly exposed
 
     fun getAllTasks(){
         viewModelScope.launch {
