@@ -12,6 +12,7 @@ room = "2.7.2"
 hilt = "2.57"
 ksp = "2.0.21-1.0.25"
 datastore = "1.1.1" # latest stable
+navigationCompose = "2.8.1"
 
 
 [libraries]
@@ -35,6 +36,7 @@ room-compiler= { module = "androidx.room:room-compiler", version.ref = "room" }
 hilt-android  = { module = "com.google.dagger:hilt-android",  version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
