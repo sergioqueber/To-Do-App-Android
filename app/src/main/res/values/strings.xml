@@ -2,4 +2,9 @@
     <string name="app_name">To-Do-App</string>
     
     <string name="add_button">Add Button</string>
+    <string name="search_action">Search Action</string>
+    <string name="sort_action">Sort Action</string>
+    <string name="delete_action">Delete Action</string>
+    <string name="delete_all_action">Delete All</string>
+
 </resources>

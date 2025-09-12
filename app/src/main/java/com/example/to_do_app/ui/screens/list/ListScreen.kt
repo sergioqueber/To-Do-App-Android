@@ -1,6 +1,5 @@
 package com.example.to_do_app.ui.screens.list
 
-import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
@@ -13,23 +12,26 @@ import com.example.to_do_app.R
 
 @Composable
 fun ListScreen(
-    navigateToTaskScreen: (Int) -> Unit
+    navigateToTaskScreen: (taskId: Int) -> Unit
 ){
     Scaffold (
+        topBar = {
+            ListAppBar()
+        },
         content = {},
         floatingActionButton = {
-            ListFab ( navigateToTaskScreen = navigateToTaskScreen)
+            ListFab ( onFabClicked = navigateToTaskScreen)
         }
     )
 }
 
 @Composable
 fun ListFab(
-    navigateToTaskScreen: (Int) -> Unit
+    onFabClicked: (taskId: Int) -> Unit
 ){
     FloatingActionButton(
         onClick = {
-            navigateToTaskScreen(-1)
+            onFabClicked(-1)
         }) {
         Icon(
             imageVector = Icons.Filled.Add,
