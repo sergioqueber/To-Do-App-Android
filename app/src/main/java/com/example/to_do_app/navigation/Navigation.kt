@@ -6,6 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.example.to_do_app.navigation.destinations.listComposable
 import com.example.to_do_app.navigation.destinations.taskComposable
+import com.example.to_do_app.ui.util.Action
+import com.example.to_do_app.ui.util.Constants
 import com.example.to_do_app.ui.util.Constants.LIST_SCREEN
 
 @Composable
@@ -16,8 +18,14 @@ fun SetUpNavigation(
         Screens(navController =  navController)
     }
 
+    // Construct the start destination route with the default action
+    val startDestinationRoute = Constants.LIST_SCREEN.replace(
+        "{${Constants.LIST_ARGUMENT_KEY}}",
+        Action.NO_ACTION.name
+    )
+
     NavHost(navController = navController,
-        startDestination = LIST_SCREEN
+        startDestination = startDestinationRoute
     ){
         listComposable(
             navigateToTaskScreen = screen.task
