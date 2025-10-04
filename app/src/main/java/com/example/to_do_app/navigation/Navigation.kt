@@ -9,10 +9,12 @@ import com.example.to_do_app.navigation.destinations.taskComposable
 import com.example.to_do_app.ui.util.Action
 import com.example.to_do_app.ui.util.Constants
 import com.example.to_do_app.ui.util.Constants.LIST_SCREEN
+import com.example.to_do_app.ui.viewmodels.ShareViewModel
 
 @Composable
 fun SetUpNavigation(
-        navController: NavHostController
+        navController: NavHostController,
+        shareViewModel: ShareViewModel
 ){
     val screen = remember ( navController ) {
         Screens(navController =  navController)
@@ -28,7 +30,8 @@ fun SetUpNavigation(
         startDestination = startDestinationRoute
     ){
         listComposable(
-            navigateToTaskScreen = screen.task
+            navigateToTaskScreen = screen.task,
+            shareViewModel = shareViewModel
         )
         taskComposable (
             navigateToListScreen = screen.list
