@@ -1,9 +1,13 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.to_do_app.ui.screens.task
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -14,8 +18,10 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.to_do_app.R
+import com.example.to_do_app.data.models.ToDoTask
 import com.example.to_do_app.ui.util.Action
 
 @Composable
@@ -58,6 +64,40 @@ fun NewTaskAppBar(
 }
 
 @Composable
+fun ExistingTaskAppBar(
+    selectedTask: ToDoTask,
+    navigateToListScreen: (Action) -> Unit
+)
+{
+    TopAppBar(
+        navigationIcon = {
+            CloseAction(
+                onCloseClicked = navigateToListScreen
+            )
+        },
+        title = {
+            Text(
+                text = selectedTask.title,
+                color = MaterialTheme.colorScheme.surface,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+        },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primary
+        ),
+        actions = {
+            DeleteAction(
+                onDeleteClicked = navigateToListScreen
+            )
+            UpdateAction(
+                onUpdateClicked = navigateToListScreen
+            )
+        }
+    )
+}
+
+@Composable
 fun BackAction(
     onBackClicked: (Action) -> Unit
 ){
@@ -69,6 +109,57 @@ fun BackAction(
         Icon (
             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
             contentDescription = stringResource(id = R.string.back_arrow),
+            tint = MaterialTheme.colorScheme.surface
+        )
+    }
+}
+
+@Composable
+fun CloseAction(
+    onCloseClicked: (Action) -> Unit
+){
+    IconButton(
+        onClick = {
+            onCloseClicked(Action.NO_ACTION)
+        }
+    ){
+        Icon (
+            imageVector = Icons.Filled.Close,
+            contentDescription = stringResource(id = R.string.close_icon),
+            tint = MaterialTheme.colorScheme.surface
+        )
+    }
+}
+
+@Composable
+fun DeleteAction(
+    onDeleteClicked: (Action) -> Unit
+){
+    IconButton(
+        onClick = {
+            onDeleteClicked(Action.DELETE)
+        }
+    ){
+        Icon (
+            imageVector = Icons.Filled.Delete,
+            contentDescription = stringResource(id = R.string.delete_icon),
+            tint = MaterialTheme.colorScheme.surface
+        )
+    }
+}
+
+@Composable
+fun UpdateAction(
+    onUpdateClicked: (Action) -> Unit
+){
+    IconButton(
+        onClick = {
+            onUpdateClicked(Action.UPDATE)
+        }
+    ){
+        Icon (
+            imageVector = Icons.Filled.Check,
+            contentDescription = stringResource(id = R.string.update_icon),
             tint = MaterialTheme.colorScheme.surface
         )
     }
@@ -95,6 +186,21 @@ fun AddAction(
 @Preview
 fun NewTaskAppBarPreview(){
     NewTaskAppBar(
+        navigateToListScreen = {}
+    )
+}
+
+@Composable
+@Preview
+fun ExistingTaskAppBarPreview()
+{
+    ExistingTaskAppBar(
+        selectedTask = ToDoTask(
+            id = 0,
+            title = "MobilePay Task",
+            description = "Description",
+            priority = com.example.to_do_app.data.models.Priority.LOW
+        ),
         navigateToListScreen = {}
     )
 }
