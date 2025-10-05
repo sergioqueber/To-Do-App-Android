@@ -6,5 +6,11 @@
     <string name="sort_action">Sort Action</string>
     <string name="delete_action">Delete Action</string>
     <string name="delete_all_action">Delete All</string>
+    <string name="listScreenTitle">Search</string>
+    <string name="search_placeholder">Search</string>
+    <string name="search_icon">Sort By</string>
+    <string name="close_icon">Delete</string>
+
+
 
 </resources>
