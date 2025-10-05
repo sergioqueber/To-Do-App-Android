@@ -43,4 +43,22 @@ class ShareViewModel @Inject constructor(
             _allTasks.value = RequestState.Error(e)
         }
     }
+
+    private val _selectedTask: MutableStateFlow<ToDoTask?> = MutableStateFlow(null)
+    val selectedTask: StateFlow<ToDoTask?> = _selectedTask
+
+    fun getSelectedTask(taskId: Int) {
+        viewModelScope.launch {
+            // THIS IS THE FIX:
+            if (taskId == -1) {
+                // If it's a new task, just set the value to null immediately.
+                _selectedTask.value = null
+            } else {
+                // Otherwise, fetch the task from the repository.
+                repository.getSelectedTask(taskId = taskId).collect { task ->
+                    _selectedTask.value = task
+                }
+            }
+        }
+    }
 }
