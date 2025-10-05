@@ -6,10 +6,14 @@
     <string name="sort_action">Sort Action</string>
     <string name="delete_action">Delete Action</string>
     <string name="delete_all_action">Delete All</string>
-    <string name="listScreenTitle">Search</string>
+    <string name="listScreenTitle">Tasks</string>
     <string name="search_placeholder">Search</string>
-    <string name="search_icon">Sort By</string>
-    <string name="close_icon">Delete</string>
+    <string name="search_icon">Search icon</string>
+    <string name="close_icon">Close icon</string>
+    <string name="sad_face_icon">Sad face Icon</string>
+    <string name="empty_content">No tasks found</string>
+
+
 
 
 
