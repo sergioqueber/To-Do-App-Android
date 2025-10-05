@@ -98,7 +98,9 @@ fun TaskItem(
                     maxLines = 1
                 )
                 Box(
-                    modifier = Modifier.fillMaxWidth().weight(1f),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
                     contentAlignment = Alignment.TopEnd
                 ){
                     Canvas(

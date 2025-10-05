@@ -1,7 +1,5 @@
 package com.example.to_do_app.ui.screens.list
 
-import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -14,7 +12,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.to_do_app.R
 import com.example.to_do_app.ui.util.SearchAppBarState
 import com.example.to_do_app.ui.viewmodels.ShareViewModel
